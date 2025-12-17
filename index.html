@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klab.at</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .smooth-scroll {
+      scroll-behavior: smooth;
+    }
+    
+    .page-section {
+      min-height: 100%;
+      display: none;
+    }
+    
+    .page-section.active {
+      display: block;
+    }
+    
+    .nav-link {
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      transform: translateY(-2px);
+    }
+    
+    .product-card, .merch-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .product-card:hover, .merch-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    }
+    
+    .feature-icon {
+      transition: transform 0.3s ease;
+    }
+    
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1);
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.6s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full w-full overflow-auto">
+  <div id="app-wrapper" class="h-full w-full relative"><!-- Coffee Background Pattern -->
+   <div id="coffee-bg" class="fixed inset-0 z-0 opacity-50" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%234a3728\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M30 15c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 2c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6 2.7-6 6-6z\'/%3E%3Ccircle cx=\'30\' cy=\'23\' r=\'2\'/%3E%3C/g%3E%3C/svg%3E'); pointer-events: none;"></div><!-- Content Wrapper -->
+   <div class="relative z-10 h-full w-full"><!-- Navigation -->
+    <nav id="main-nav" class="sticky top-0 z-50 shadow-md">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+       <div id="brand-logo" class="text-2xl font-bold cursor-pointer"><img src="/logo.jpeg" alt="">
+       </div>
+       <div class="hidden md:flex space-x-8"><a href="#home" class="nav-link font-medium" data-page="home">Beranda</a> <a href="#about" class="nav-link font-medium" data-page="about">Tentang</a> <a href="#products" class="nav-link font-medium" data-page="products">Menu Kopi</a> <a href="#merchandise" class="nav-link font-medium" data-page="merchandise">Coffee Beans &amp; Merch</a> <a href="#contact" class="nav-link font-medium" data-page="contact">Kontak</a>
+       </div><button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg></button>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden pb-4"><a href="#home" class="block py-2 font-medium" data-page="home">Beranda</a> <a href="#about" class="block py-2 font-medium" data-page="about">Tentang</a> <a href="#products" class="block py-2 font-medium" data-page="products">Menu Kopi</a> <a href="#merchandise" class="block py-2 font-medium" data-page="merchandise">Coffee Beans &amp; Merch</a> <a href="#contact" class="block py-2 font-medium" data-page="contact">Kontak</a>
+      </div>
+     </div>
+    </nav><!-- Home Page -->
+    <div id="home-page" class="page-section active"><!-- Hero Section -->
+     <section id="hero-section" class="py-20 px-4">
+      <div class="max-w-7xl mx-auto text-center">
+       <h1 id="hero-headline" class="text-5xl md:text-6xl font-bold mb-6">Produk Berkualitas untuk Anda</h1>
+       <p id="hero-description" class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Temukan koleksi produk terbaik yang dirancang dengan inovasi dan kualitas premium untuk memenuhi kebutuhan Anda</p><button id="cta-button" class="px-8 py-4 rounded-lg text-lg font-semibold shadow-lg hover:shadow-xl transition-all">Lihat Produk</button>
+      </div>
+     </section><!-- Features Section -->
+     <section class="py-16 px-4">
+      <div class="max-w-7xl mx-auto">
+       <h2 class="text-4xl font-bold text-center mb-12">Mengapa Memilih Kami</h2>
+       <div class="grid md:grid-cols-3 gap-8">
+        <div class="feature-card text-center p-6 rounded-xl shadow-md">
+         <div class="feature-icon text-5xl mb-4">
+          ☕
+         </div>
+         <h3 class="text-xl font-bold mb-3">Kopi Premium</h3>
+         <p>Biji kopi pilihan dari perkebunan terbaik Indonesia dan dunia</p>
+        </div>
+        <div class="feature-card text-center p-6 rounded-xl shadow-md">
+         <div class="feature-icon text-5xl mb-4">
+          👨‍🍳
+         </div>
+         <h3 class="text-xl font-bold mb-3">Barista Ahli</h3> 
+         <p>Disajikan oleh barista profesional</p>
+        </div>
+        <div class="feature-card text-center p-6 rounded-xl shadow-md">
+         <div class="feature-icon text-5xl mb-4">
+          🏠
+         </div>
+         <h3 class="text-xl font-bold mb-3">Tempat Nyaman</h3>
+         <p>Suasana hangat dan cozy untuk bersantai dan bekerja</p>
+        </div>
+       </div>
+      </div>
+     </section><!-- Featured Products -->
+     <section class="py-16 px-4">
+      <div class="max-w-7xl mx-auto">
+       <h2 class="text-4xl font-bold text-center mb-12">Menu Favorit</h2>
+       <div class="grid md:grid-cols-3 gap-8">
+        <div class="product-card rounded-xl shadow-md overflow-hidden">
+         <div class="h-64 flex items-center justify-center text-6xl">
+          ☕
+         </div>
+         <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Ekspresso Classico</h3>
+          <p class="mb-4">Ekspresso murni dengan crema sempurna dan aroma kuat</p>
+          <p class="text-2xl font-bold mb-4">Rp 28.000</p><button class="w-full py-3 rounded-lg font-semibold transition-all">Pesan Sekarang</button>
+         </div>
+        </div>
+        <div class="product-card rounded-xl shadow-md overflow-hidden">
+         <div class="h-64 flex items-center justify-center text-6xl">
+          🥤
+         </div>
+         <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Caramel Macchiato</h3>
+          <p class="mb-4">Perpaduan sempurna Ekspresso, susu, dan karamel</p>
+          <p class="text-2xl font-bold mb-4">Rp 42.000</p><button class="w-full py-3 rounded-lg font-semibold transition-all">Pesan Sekarang</button>
+         </div>
+        </div>
+        <div class="product-card rounded-xl shadow-md overflow-hidden">
+         <div class="h-64 flex items-center justify-center text-6xl">
+          🧊
+         </div>
+         <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Iced Coffee Latte</h3>
+          <p class="mb-4">Kopi dingin creamy dengan es batu yang menyegarkan</p>
+          <p class="text-2xl font-bold mb-4">Rp 38.000</p><button class="w-full py-3 rounded-lg font-semibold transition-all">Pesan Sekarang</button>
+         </div>
+        </div>
+       </div>
+      </div>
+     </section><!-- Testimonials -->
+     <section class="py-16 px-4">
+      <div class="max-w-7xl mx-auto">
+       <h2 class="text-4xl font-bold text-center mb-12">Testimoni Pelanggan</h2>
+       <div class="grid md:grid-cols-2 gap-8">
+        <div class="p-6 rounded-xl shadow-md">
+         <div class="flex items-center mb-4">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center text-2xl mr-4">
+           👨
+          </div>
+          <div>
+           <h4 class="font-bold">Budi Santoso</h4>
+           <div class="text-yellow-500">
+            ⭐⭐⭐⭐⭐
+           </div>
+          </div>
+         </div>
+         <p>"Kopinya enak banget! Ekspresso-nya punya crema yang sempurna. Tempatnya juga nyaman untuk kerja. Jadi langganan deh!"</p>
+        </div>
+        <div class="p-6 rounded-xl shadow-md">
+         <div class="flex items-center mb-4">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center text-2xl mr-4">
+           👩
+          </div>
+          <div>
+           <h4 class="font-bold">Siti Rahayu</h4>
+           <div class="text-yellow-500">
+            ⭐⭐⭐⭐⭐
+           </div>
+          </div>
+         </div>
+         <p>"Klab.at adalah coffee shop terbaik! Caramel Macchiato-nya juara, barista-nya ramah. Highly recommended!"</p>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div><!-- About Page -->
+    <div id="about-page" class="page-section">
+     <section class="py-20 px-4">
+      <div class="max-w-4xl mx-auto">
+       <h1 class="text-5xl font-bold text-center mb-8">Tentang Kami</h1>
+       <p id="company-tagline" class="text-xl text-center mb-16">Dari Biji Pilihan hingga Secangkir Sempurna</p>
+       <div class="mb-12 p-8 rounded-xl shadow-md">
+        <h2 class="text-3xl font-bold mb-4">Kisah Coffee Klab.at</h2>
+        <p class="text-lg leading-relaxed">Logo klab.at merepresentasikan narasi tentang alam dan identitas. Bentuk segitiga di bagian atas melambangkan Gunung Klabat, ikon alam Sulawesi Utara, yang digambarkan berdiri kokoh sebagai simbol ketenangan dan perlindungan—seolah menjaga setiap individu yang hadir dalam ruang sosial ini. Di dalam segitiga tersebut, biji kopi menjadi pusat kehidupan, menghadirkan kehangatan, percakapan, serta energi yang menyatukan komunitas.
+
+Bentuk kotak di bagian bawah segitiga merepresentasikan area nyata: ruang yang dapat diakses, taman yang dapat dinikmati, serta tempat yang dihidupkan oleh kebersamaan. Elemen ini menegaskan bahwa klab.at bukan sekadar gagasan, melainkan sebuah ruang sosial yang berakar kuat pada tanah dan budaya lokal.
+
+Nama “klab.at” sendiri semakin memperkuat narasi tersebut. Kata “klab” menegaskan identitas sebagai klub atau ruang berkumpul, sementara “at” memberi makna lokasi dan keberadaan. Ia dapat dimaknai secara bebas—seperti klab at Tondano, klab at the garden, atau klab at your moment—memberikan ruang bagi setiap individu untuk menafsirkan pengalaman mereka sendiri. Pemisahan kata ini menciptakan dinamika makna: klab sebagai wadah, dan at sebagai titik kehadiran, yang menjembatani dunia nyata dan digital.
+
+Dengan demikian, logo klab.at bukan sekadar elemen visual, melainkan sebuah cerita—tentang Gunung Klabat sebagai pelindung, kopi sebagai perekat, area sebagai ruang nyata, serta nama yang terbuka untuk interpretasi personal. Ia mengundang setiap orang untuk menemukan makna “at” versi mereka sendiri, dalam sebuah ruang sosial yang hangat, tenang, dan penuh kehidupan.</p>
+       </div>
+       <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <div class="p-8 rounded-xl shadow-md">
+         <div class="text-4xl mb-4">
+          🎯
+         </div>
+         <h3 class="text-2xl font-bold mb-4">Visi</h3>
+         <p id="vision-text" class="leading-relaxed">Menjadi perusahaan teknologi terdepan yang menghadirkan inovasi produk berkualitas untuk meningkatkan kualitas hidup masyarakat</p>
+        </div>
+        <div class="p-8 rounded-xl shadow-md">
+         <div class="text-4xl mb-4">
+          🚀
+         </div>
+         <h3 class="text-2xl font-bold mb-4">Misi</h3>
+         <p id="mission-text" class="leading-relaxed">Menyediakan produk berkualitas tinggi dengan harga terjangkau dan memberikan pelayanan terbaik kepada setiap pelanggan</p>
+        </div>
+       </div>
+       <div class="p-8 rounded-xl shadow-md">
+        <h2 class="text-3xl font-bold mb-6">Nilai &amp; Keunggulan</h2>
+        <div class="space-y-4">
+         <div class="flex items-start"><span class="text-2xl mr-4">☕</span>
+          <div>
+           <h4 class="font-bold text-lg mb-1">Biji Kopi Pilihan</h4>
+           <p>Menggunakan biji kopi premium yang dipilih langsung dari kebun kopi terbaik</p>
+          </div>
+         </div>
+         <div class="flex items-start"><span class="text-2xl mr-4">👨‍🍳</span>
+          <div>
+           <h4 class="font-bold text-lg mb-1">Barista Profesional</h4>
+           <p>Tim barista bersertifikat yang ahli dalam meracik kopi dengan sempurna</p>
+          </div>
+         </div>
+         <div class="flex items-start"><span class="text-2xl mr-4">🏠</span>
+          <div>
+           <h4 class="font-bold text-lg mb-1">Suasana Nyaman</h4>
+           <p>Tempat yang hangat dan cozy untuk bersantai sambil menikmati kopi favorit</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div><!-- Products Page -->
+    <div id="products-page" class="page-section">
+     <section class="py-20 px-4">
+      <div class="max-w-7xl mx-auto">
+       <h1 class="text-5xl font-bold text-center mb-12">Menu Kopi Kami</h1>
+       <div class="flex justify-center mb-8 flex-wrap gap-4"><button class="category-btn px-6 py-2 rounded-full font-semibold transition-all" data-category="all">Semua Menu</button> <button class="category-btn px-6 py-2 rounded-full font-semibold transition-all" data-category="smartphone">Ekspresso</button> <button class="category-btn px-6 py-2 rounded-full font-semibold transition-all" data-category="laptop">Latte</button> <button class="category-btn px-6 py-2 rounded-full font-semibold transition-all" data-category="audio">Iced Coffee</button>
+       </div>
+       <div id="products-grid" class="grid md:grid-cols-3 gap-8">
+        <div class="product-card rounded-xl shadow-md overflow-hidden" data-category="smartphone">
+         <div class="h-64 flex items-center justify-center text-7xl">
+          ☕
+         </div>
+         <div class="p-6"><span class="inline-block px-3 py-1 rounded-full text-sm font-semibold mb-2">Ekspresso</span>
+          <h3 class="text-xl font-bold mb-2">Single Ekspresso Shot</h3>
+          <p class="mb-3">Ekspresso murni 30ml dari biji arabica pilihan dengan crema sempurna</p>
+          <p class="text-2xl font-bold mb-4">Rp 25.000</p><button class="w-full py-3 rounded-lg font-semibold transition-all">Pesan Sekarang</button>
+         </div>
+        </div>
+        <div class="product-card rounded-xl shadow-md overflow-hidden" data-category="smartphone">
+         <div class="h-64 flex items-center justify-center text-7xl">
+          ☕
+         </div>
+         <div class="p-6"><span class="inline-block px-3 py-1 rounded-full text-sm font-semibold mb-2">Ekspresso</span>
+          <h3 class="text-xl font-bold mb-2">Double Ekspresso</h3>
+          <p class="mb-3">Double shot Ekspresso 60ml untuk pengalaman kopi yang lebih kuat</p>
+          <p class="text-2xl font-bold mb-4">Rp 35.000</p><button class="w-full py-3 rounded-lg font-semibold transition-all">Pesan Sekarang</button>
+         </div>
+        </div>
+        <div class="product-card rounded-xl shadow-md overflow-hidden" data-category="laptop">
+         <div class="h-64 flex items-center justify-center text-7xl">
+          🥛
+         </div>
+         <div class="p-6"><span class="inline-block px-3 py-1 rounded-full text-sm font-semibold mb-2">Latte</span>
+          <h3 class="text-xl font-bold mb-2">Bonbon</h3>
+          <p class="mb-3">Ekspresso dengan susu steamed dan sedikit foam lembut</p>
+          <p class="text-2xl font-bold mb-4">Rp 38.000</p><button class="w-full py-3 rounded-lg font-semibold transition-all">Pesan Sekarang</button>
+         </div>
+        </div>
+        <div class="product-card rounded-xl shadow-md overflow-hidden" data-category="laptop">
+         <div class="h-64 flex items-center justify-center text-7xl">
+          🍮
+         </div>
+         <div class="p-6"><span class="inline-block px-3 py-1 rounded-full text-sm font-semibold mb-2">Latte</span>
+          <h3 class="text-xl font-bold mb-2">Caffe Latte</h3>
+          <p class="mb-3">Latte klasik dengan sentuhan sirup vanilla premium</p>
+          <p class="text-2xl font-bold mb-4">Rp 42.000</p><button class="w-full py-3 rounded-lg font-semibold transition-all">Pesan Sekarang</button>
+         </div>
+        </div>
+        <div class="product-card rounded-xl shadow-md overflow-hidden" data-category="audio">
+         <div class="h-64 flex items-center justify-center text-7xl">
+          🧊
+         </div>
+         <div class="p-6"><span class="inline-block px-3 py-1 rounded-full text-sm font-semibold mb-2">Iced Coffee</span>
+          <h3 class="text-xl font-bold mb-2">Iced Americano</h3>
+          <p class="mb-3">Ekspresso shot dengan air dingin dan es batu, menyegarkan</p>
+          <p class="text-2xl font-bold mb-4">Rp 32.000</p><button class="w-full py-3 rounded-lg font-semibold transition-all">Pesan Sekarang</button>
+         </div>
+        </div>
+        <div class="product-card rounded-xl shadow-md overflow-hidden" data-category="audio">
+         <div class="h-64 flex items-center justify-center text-7xl">
+          🥤
+         </div>
+         <div class="p-6"><span class="inline-block px-3 py-1 rounded-full text-sm font-semibold mb-2">Iced Coffee</span>
+          <h3 class="text-xl font-bold mb-2">Iced Caramel Latte</h3>
+          <p class="mb-3">Kopi dingin dengan susu dan karamel, manis dan creamy</p>
+          <p class="text-2xl font-bold mb-4">Rp 45.000</p><button class="w-full py-3 rounded-lg font-semibold transition-all">Pesan Sekarang</button>
+         </div>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div><!-- Merchandise Page -->
+    <div id="merchandise-page" class="page-section">
+     <section class="py-20 px-4">
+      <div class="max-w-7xl mx-auto">
+       <h1 class="text-5xl font-bold text-center mb-12">Coffee Beans &amp; Merchandise</h1>
+       <div class="flex justify-center mb-8 flex-wrap gap-4"><button class="merch-category-btn px-6 py-2 rounded-full font-semibold transition-all" data-category="all">Semua</button> <button class="merch-category-btn px-6 py-2 rounded-full font-semibold transition-all" data-category="clothing">Biji Kopi</button> <button class="merch-category-btn px-6 py-2 rounded-full font-semibold transition-all" data-category="accessories">Peralatan</button> <button class="merch-category-btn px-6 py-2 rounded-full font-semibold transition-all" data-category="lifestyle">Merchandise</button>
+       </div>
+       <div id="merchandise-grid" class="grid md:grid-cols-4 gap-6">
+        <div class="merch-card rounded-xl shadow-md overflow-hidden" data-category="clothing">
+         <div class="h-48 flex items-center justify-center text-6xl">
+          🌰
+         </div>
+         <div class="p-4"><span class="inline-block px-2 py-1 rounded-full text-xs font-semibold mb-2">Biji Kopi</span>
+          <h3 class="font-bold mb-2">Arabica Gayo</h3>
+          <p class="text-sm mb-2">250 gram - Medium Roast</p>
+          <p class="text-xl font-bold mb-3">Rp 85.000</p><button class="w-full py-2 rounded-lg font-semibold text-sm transition-all">Beli Sekarang</button>
+         </div>
+        </div>
+        <div class="merch-card rounded-xl shadow-md overflow-hidden" data-category="clothing">
+         <div class="h-48 flex items-center justify-center text-6xl">
+          🌰
+         </div>
+         <div class="p-4"><span class="inline-block px-2 py-1 rounded-full text-xs font-semibold mb-2">Biji Kopi</span>
+          <h3 class="font-bold mb-2">Robusta Toraja</h3>
+          <p class="text-sm mb-2">250 gram - Dark Roast</p>
+          <p class="text-xl font-bold mb-3">Rp 75.000</p><button class="w-full py-2 rounded-lg font-semibold text-sm transition-all">Beli Sekarang</button>
+         </div>
+        </div>
+        <div class="merch-card rounded-xl shadow-md overflow-hidden" data-category="clothing">
+         <div class="h-48 flex items-center justify-center text-6xl">
+          🌰
+         </div>
+         <div class="p-4"><span class="inline-block px-2 py-1 rounded-full text-xs font-semibold mb-2">Biji Kopi</span>
+          <h3 class="font-bold mb-2">Blend Signature</h3>
+          <p class="text-sm mb-2">500 gram - House Blend</p>
+          <p class="text-xl font-bold mb-3">Rp 145.000</p><button class="w-full py-2 rounded-lg font-semibold text-sm transition-all">Beli Sekarang</button>
+         </div>
+        </div>
+        <div class="merch-card rounded-xl shadow-md overflow-hidden" data-category="accessories">
+         <div class="h-48 flex items-center justify-center text-6xl">
+          🫖
+         </div>
+         <div class="p-4"><span class="inline-block px-2 py-1 rounded-full text-xs font-semibold mb-2">Peralatan</span>
+          <h3 class="font-bold mb-2">French Press</h3>
+          <p class="text-sm mb-2">Kapasitas 600ml</p>
+          <p class="text-xl font-bold mb-3">Rp 285.000</p><button class="w-full py-2 rounded-lg font-semibold text-sm transition-all">Beli Sekarang</button>
+         </div>
+        </div>
+        <div class="merch-card rounded-xl shadow-md overflow-hidden" data-category="accessories">
+         <div class="h-48 flex items-center justify-center text-6xl">
+          ⚗️
+         </div>
+         <div class="p-4"><span class="inline-block px-2 py-1 rounded-full text-xs font-semibold mb-2">Peralatan</span>
+          <h3 class="font-bold mb-2">Pour Over Set</h3>
+          <p class="text-sm mb-2">V60 Dripper + Server</p>
+          <p class="text-xl font-bold mb-3">Rp 325.000</p><button class="w-full py-2 rounded-lg font-semibold text-sm transition-all">Beli Sekarang</button>
+         </div>
+        </div>
+        <div class="merch-card rounded-xl shadow-md overflow-hidden" data-category="accessories">
+         <div class="h-48 flex items-center justify-center text-6xl">
+          🔥
+         </div>
+         <div class="p-4"><span class="inline-block px-2 py-1 rounded-full text-xs font-semibold mb-2">Peralatan</span>
+          <h3 class="font-bold mb-2">Coffee Grinder</h3>
+          <p class="text-sm mb-2">Manual Ceramic Burr</p>
+          <p class="text-xl font-bold mb-3">Rp 425.000</p><button class="w-full py-2 rounded-lg font-semibold text-sm transition-all">Beli Sekarang</button>
+         </div>
+        </div>
+        <div class="merch-card rounded-xl shadow-md overflow-hidden" data-category="lifestyle">
+         <div class="h-48 flex items-center justify-center text-6xl">
+          ☕
+         </div>
+         <div class="p-4"><span class="inline-block px-2 py-1 rounded-full text-xs font-semibold mb-2">Merchandise</span>
+          <h3 class="font-bold mb-2">Coffee Tumbler</h3>
+          <p class="text-sm mb-2">Stainless 500ml</p>
+          <p class="text-xl font-bold mb-3">Rp 165.000</p><button class="w-full py-2 rounded-lg font-semibold text-sm transition-all">Beli Sekarang</button>
+         </div>
+        </div>
+        <div class="merch-card rounded-xl shadow-md overflow-hidden" data-category="lifestyle">
+         <div class="h-48 flex items-center justify-center text-6xl">
+          ��
+         </div>
+         <div class="p-4"><span class="inline-block px-2 py-1 rounded-full text-xs font-semibold mb-2">Merchandise</span>
+          <h3 class="font-bold mb-2">Coffee Lover Tee</h3>
+          <p class="text-sm mb-2">Premium Cotton - S to XL</p>
+          <p class="text-xl font-bold mb-3">Rp 185.000</p><button class="w-full py-2 rounded-lg font-semibold text-sm transition-all">Beli Sekarang</button>
+         </div>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div><!-- Contact Page -->
+    <div id="contact-page" class="page-section">
+     <section class="py-20 px-4">
+      <div class="max-w-5xl mx-auto">
+       <h1 class="text-5xl font-bold text-center mb-12">Hubungi Kami</h1>
+       <div class="grid md:grid-cols-2 gap-8">
+        <div>
+         <div class="p-8 rounded-xl shadow-md mb-6">
+          <h2 class="text-2xl font-bold mb-6">Kirim Pesan</h2>
+          <form id="contact-form">
+           <div class="mb-4"><label for="contact-name" class="block font-semibold mb-2">Nama</label> <input type="text" id="contact-name" class="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:border-opacity-80" placeholder="Nama lengkap Anda" required>
+           </div>
+           <div class="mb-4"><label for="contact-email" class="block font-semibold mb-2">Email</label> <input type="email" id="contact-email" class="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:border-opacity-80" placeholder="email@example.com" required>
+           </div>
+           <div class="mb-4"><label for="contact-message" class="block font-semibold mb-2">Pesan</label> <textarea id="contact-message" rows="4" class="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:border-opacity-80" placeholder="Tulis pesan Anda..." required></textarea>
+           </div><button type="submit" class="w-full py-3 rounded-lg font-semibold transition-all">Kirim Pesan</button>
+          </form>
+          <div id="form-message" class="mt-4 p-4 rounded-lg hidden"></div>
+         </div>
+         <div>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d329411.7968133784!2d124.7210579!3d1.2681163!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32870f3d11b9d441%3A0x3f81c2142567eecf!2sKlabat%20Space!5e1!3m2!1sid!2sid!4v1765851216608!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+        <div>
+         <div class="p-8 rounded-xl shadow-md mb-6">
+          <h2 class="text-2xl font-bold mb-6">Informasi Kontak</h2>
+          <div class="space-y-4">
+           <div class="flex items-start"><span class="text-2xl mr-4">📧</span>
+            <div>
+             <h4 class="font-bold mb-1">Email</h4>
+             <p id="display-email">contact@klabat.com</p>
+            </div>
+           </div>
+           <div class="flex items-start"><span class="text-2xl mr-4">📱</span>
+            <div>
+             <h4 class="font-bold mb-1">Telepon</h4>
+             <p id="display-phone">+62 812 3456 7890</p>
+            </div>
+           </div>
+           <div class="flex items-start"><span class="text-2xl mr-4">📍</span>
+            <div>
+             <h4 class="font-bold mb-1">Alamat</h4>
+             <p id="display-address">CXCQ+VF4, Airmadidi Atas, Kec. Airmadidi, Kabupaten Minahasa Utara, Sulawesi Utara</p>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="p-8 rounded-xl shadow-md">
+          <h2 class="text-2xl font-bold mb-6">Media Sosial</h2>
+          <div class="flex gap-4"><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full flex items-center justify-center text-2xl hover:transform hover:scale-110 transition-transform">📷</a> <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full flex items-center justify-center text-2xl hover:transform hover:scale-110 transition-transform">👥</a> <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full flex items-center justify-center text-2xl hover:transform hover:scale-110 transition-transform">🐦</a> <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full flex items-center justify-center text-2xl hover:transform hover:scale-110 transition-transform">📺</a>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div><!-- Footer -->
+    <footer id="main-footer" class="py-12 px-4">
+     <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+       <div>
+        <h3 class="text-xl font-bold mb-4">Klab.at</h3>
+        <p>☕ Secangkir kebahagiaan untuk setiap hari Anda</p>
+       </div>
+       <div>
+        <h4 class="font-bold mb-4">Menu</h4>
+        <div class="space-y-2"><a href="#home" class="block hover:underline" data-page="home">Beranda</a> <a href="#about" class="block hover:underline" data-page="about">Tentang</a> <a href="#products" class="block hover:underline" data-page="products">Menu Kopi</a> <a href="#merchandise" class="block hover:underline" data-page="merchandise">Coffee Beans</a>
+        </div>
+       </div>
+       <div>
+        <h4 class="font-bold mb-4">Kontak</h4>
+        <p class="mb-2">📧 klab.at@gmail.com</p>
+        <p>📱 +62 812 3456 7890</p>
+       </div>
+       <div>
+        <h4 class="font-bold mb-4">Ikuti Kami</h4>
+        <div class="flex gap-3"><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="text-2xl hover:transform hover:scale-110 transition-transform">📷</a> <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="text-2xl hover:transform hover:scale-110 transition-transform">👥</a> <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-2xl hover:transform hover:scale-110 transition-transform">🐦</a>
+        </div>
+       </div>
+      </div>
+      <div class="text-center pt-8 border-t-2">
+       <p>© 2024 Klab.at. All rights reserved.</p>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      background_color: "#6F4E37",
+      nav_bg_color: "#3E2723",
+      primary_color: "#8B4513",
+      text_color: "#2c1810",
+      secondary_color: "#D4A574",
+      font_family: "system-ui",
+      font_size: 16,
+      brand_name: "Klab.at",
+      hero_headline: "Nikmati Secangkir Kebahagiaan",
+      hero_description: "Rasakan cita rasa kopi pilihan terbaik dari berbagai belahan dunia. Setiap tegukan adalah petualangan rasa yang tak terlupakan",
+      cta_button: "Jelajahi Menu",
+      company_tagline: "Dari Biji Pilihan hingga Secangkir Sempurna",
+      vision_text: "Menjadi destinasi kopi terbaik yang menghadirkan pengalaman minum kopi berkelas dunia dan membangun komunitas pecinta kopi di Indonesia",
+      mission_text: "Menyajikan kopi berkualitas premium dengan biji pilihan terbaik, menciptakan suasana hangat yang nyaman, dan memberikan pelayanan terbaik untuk setiap pelanggan",
+      contact_email: "klab.at@gmail.com",
+      contact_phone: "+62 812 3456 7890",
+      contact_address: "Jl. Sudirman No. 123, Jakarta Pusat 10220, Indonesia"
+    };
+
+    let currentPage = 'home';
+
+    function navigateToPage(pageName) {
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      const targetPage = document.getElementById(`${pageName}-page`);
+      if (targetPage) {
+        targetPage.classList.add('active');
+        targetPage.classList.add('fade-in');
+        currentPage = pageName;
+        window.scrollTo(0, 0);
+      }
+    }
+
+    async function onConfigChange(config) {
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseFontStack = 'system-ui, -apple-system, sans-serif';
+      const fontFamily = `${customFont}, ${baseFontStack}`;
+      const baseSize = config.font_size || defaultConfig.font_size;
+
+      document.body.style.fontFamily = fontFamily;
+      document.body.style.fontSize = `${baseSize}px`;
+
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const navBgColor = config.nav_bg_color || defaultConfig.nav_bg_color;
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+
+      document.getElementById('app-wrapper').style.backgroundColor = bgColor;
+      document.getElementById('main-nav').style.backgroundColor = navBgColor;
+      document.getElementById('main-nav').style.color = '#f5e6d3';
+      document.getElementById('main-footer').style.backgroundColor = navBgColor;
+      document.getElementById('main-footer').style.color = '#f5e6d3';
+
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.style.color = '#f5e6d3';
+      });
+      
+      document.getElementById('mobile-menu-btn').style.color = '#f5e6d3';
+
+      document.getElementById('hero-section').style.backgroundColor = primaryColor;
+      document.getElementById('hero-section').style.color = '#f5e6d3';
+
+      document.getElementById('coffee-bg').style.backgroundColor = bgColor;
+
+      document.querySelectorAll('.feature-card, .product-card, .merch-card').forEach(card => {
+        card.style.backgroundColor = '#f5e6d3';
+        card.style.color = textColor;
+      });
+
+      document.querySelectorAll('button').forEach(btn => {
+        if (btn.id === 'mobile-menu-btn') {
+          btn.style.color = '#f5e6d3';
+        } else if (btn.classList.contains('category-btn') || btn.classList.contains('merch-category-btn')) {
+          btn.style.backgroundColor = '#f5e6d3';
+          btn.style.color = textColor;
+          btn.style.border = `2px solid ${primaryColor}`;
+        } else {
+          btn.style.backgroundColor = secondaryColor;
+          btn.style.color = textColor;
+        }
+      });
+
+      document.querySelectorAll('input, textarea').forEach(input => {
+        input.style.borderColor = primaryColor;
+        input.style.color = textColor;
+      });
+
+      document.querySelectorAll('span').forEach(span => {
+        if (span.classList.contains('inline-block') && span.textContent.match(/Smartphone|Laptop|Audio|Pakaian|Aksesoris|Lifestyle/)) {
+          span.style.backgroundColor = primaryColor;
+          span.style.color = '#ffffff';
+        }
+      });
+
+      document.getElementById('brand-logo').textContent = config.brand_name || defaultConfig.brand_name;
+      document.getElementById('hero-headline').textContent = config.hero_headline || defaultConfig.hero_headline;
+      document.getElementById('hero-description').textContent = config.hero_description || defaultConfig.hero_description;
+      document.getElementById('cta-button').textContent = config.cta_button || defaultConfig.cta_button;
+      document.getElementById('company-tagline').textContent = config.company_tagline || defaultConfig.company_tagline;
+      document.getElementById('vision-text').textContent = config.vision_text || defaultConfig.vision_text;
+      document.getElementById('mission-text').textContent = config.mission_text || defaultConfig.mission_text;
+      document.getElementById('display-email').textContent = config.contact_email || defaultConfig.contact_email;
+      document.getElementById('display-phone').textContent = config.contact_phone || defaultConfig.contact_phone;
+      document.getElementById('display-address').textContent = config.contact_address || defaultConfig.contact_address;
+
+      const footerBrandElements = document.querySelectorAll('footer h3');
+      footerBrandElements.forEach(el => {
+        if (el.textContent === 'BrandName' || el.textContent === config.brand_name || el.textContent === defaultConfig.brand_name) {
+          el.textContent = config.brand_name || defaultConfig.brand_name;
+        }
+      });
+
+      document.getElementById('hero-headline').style.fontSize = `${baseSize * 3.5}px`;
+      document.getElementById('hero-description').style.fontSize = `${baseSize * 1.25}px`;
+      document.querySelectorAll('h1').forEach(h => h.style.fontSize = `${baseSize * 3}px`);
+      document.querySelectorAll('h2').forEach(h => h.style.fontSize = `${baseSize * 2}px`);
+      document.querySelectorAll('h3').forEach(h => h.style.fontSize = `${baseSize * 1.5}px`);
+      document.querySelectorAll('h4').forEach(h => h.style.fontSize = `${baseSize * 1.25}px`);
+    }
+
+    document.querySelectorAll('a[data-page]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const pageName = link.getAttribute('data-page');
+        navigateToPage(pageName);
+        
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (!mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    });
+
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.getElementById('cta-button').addEventListener('click', () => {
+      navigateToPage('products');
+    });
+
+    document.querySelectorAll('.category-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.getAttribute('data-category');
+        const products = document.querySelectorAll('#products-grid .product-card');
+        
+        products.forEach(product => {
+          if (category === 'all' || product.getAttribute('data-category') === category) {
+            product.style.display = 'block';
+          } else {
+            product.style.display = 'none';
+          }
+        });
+
+        document.querySelectorAll('.category-btn').forEach(b => {
+          b.style.opacity = '0.6';
+        });
+        btn.style.opacity = '1';
+      });
+    });
+
+    document.querySelectorAll('.merch-category-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.getAttribute('data-category');
+        const items = document.querySelectorAll('#merchandise-grid .merch-card');
+        
+        items.forEach(item => {
+          if (category === 'all' || item.getAttribute('data-category') === category) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        document.querySelectorAll('.merch-category-btn').forEach(b => {
+          b.style.opacity = '0.6';
+        });
+        btn.style.opacity = '1';
+      });
+    });
+
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('contact-name').value;
+      const email = document.getElementById('contact-email').value;
+      const message = document.getElementById('contact-message').value;
+      
+      const formMessage = document.getElementById('form-message');
+      formMessage.textContent = `Terima kasih ${name}! Pesan Anda telah terkirim. Kami akan menghubungi Anda melalui ${email} segera.`;
+      formMessage.style.backgroundColor = '#d1fae5';
+      formMessage.style.color = '#065f46';
+      formMessage.classList.remove('hidden');
+      
+      document.getElementById('contact-form').reset();
+      
+      setTimeout(() => {
+        formMessage.classList.add('hidden');
+      }, 5000);
+    });
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.nav_bg_color || defaultConfig.nav_bg_color,
+              set: (value) => {
+                config.nav_bg_color = value;
+                window.elementSdk.setConfig({ nav_bg_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => {
+                config.primary_color = value;
+                window.elementSdk.setConfig({ primary_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => {
+                config.secondary_color = value;
+                window.elementSdk.setConfig({ secondary_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["brand_name", config.brand_name || defaultConfig.brand_name],
+          ["hero_headline", config.hero_headline || defaultConfig.hero_headline],
+          ["hero_description", config.hero_description || defaultConfig.hero_description],
+          ["cta_button", config.cta_button || defaultConfig.cta_button],
+          ["company_tagline", config.company_tagline || defaultConfig.company_tagline],
+          ["vision_text", config.vision_text || defaultConfig.vision_text],
+          ["mission_text", config.mission_text || defaultConfig.mission_text],
+          ["contact_email", config.contact_email || defaultConfig.contact_email],
+          ["contact_phone", config.contact_phone || defaultConfig.contact_phone],
+          ["contact_address", config.contact_address || defaultConfig.contact_address]
+        ])
+      });
+    }
+
+    onConfigChange(defaultConfig);
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9aec23c3a295fdf0',t:'MTc2NTg2NjcwNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
